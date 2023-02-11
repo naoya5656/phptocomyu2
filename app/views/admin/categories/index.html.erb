@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <% @categories.each do |category| %>
+    <div class="col-sm-3 mt-3">
+      <div class="card mx-auto shadow">
+        <%= link_to admin_category_path(category) do %>
+        <%= image_tag category.get_image, width: '100%', height: '190px' %>
+        <% end %>
+        <div class="card-body">
+          <h4><%= category.name %></h4>
+        </div>
+      </div>
+
+    </div>
+    <% end %>
+  </div>
+</div>

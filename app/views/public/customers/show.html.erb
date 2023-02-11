@@ -1,0 +1,27 @@
+<div class ="container">
+  <div class="row">
+    <div class="col mt-3">
+      <div class="border-bottom border-4">
+        <%= image_tag @customer.get_profile_image(90,90), class: "rounded-circle border border-secondary" %><br>
+        <%= @customer.name %>
+        <% if @customer == current_customer %>
+        <%= link_to "プロフィール編集", edit_customer_path(current_customer), class: "btn btn-success btn-sm" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-sm-3 mt-3">
+      <% @photos.each do |photo| %>
+      <div class="card mx-auto shadow">
+        <%= link_to photo_path(photo) do %>
+          <%= image_tag photo.image, width: '100%', height: '190px' %>
+        <% end %>
+        <div class="card-body">
+          <h4><%= photo.name %></h4>
+          <h5><%= photo.customer.name %></h5>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

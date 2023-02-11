@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Photocomyu2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="border border-bottom">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/"><span><%= image_tag 'logo.jpg', width: '150px', height: '120px' %> </span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto ">
+              <% if customer_signed_in? %>
+              <li>
+                <%= link_to customer_path(current_customer.id), class: 'nav-link btn btn-outline-secondary text-dark' do %>
+                マイページ
+                <% end %>
+              </li>
+              <li>
+                <%= link_to photos_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+                投稿一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_categories_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+                カテゴリー一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_admin_category_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+                カテゴリー
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_photo_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+                投稿する
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+                ログアウト
+                <% end %>
+              </li>
+
+              <% else %>
+              <li>
+                <%= link_to new_customer_registration_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+              　新規登録
+                <% end %>
+              </li>
+              <li>
+                <%= link_to  new_customer_session_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+                ログイン
+              <% end %>
+              </li>
+              <% end %>
+    </header>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto mt-3">
+      <div class="border-bottom border-4">
+        <h4><%= @photo.name %></h4>
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-10 mx-auto mt-3">
+
+        <%= image_tag @photo.image, width: '100%', height: '100%' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mt-3">
+      <div class="card">
+        <div class="card-header">
+          <%= link_to customer_path(@photo.customer) do %>
+          <%= image_tag @photo.customer.get_profile_image(90,90), class: "rounded-circle border border-secondary" %>
+          <% end %>
+          <h4><%= @photo.customer.name %></h4>
+          <%= @photo.created_at.strftime('%Y/%m/%d %H:%M') %>
+          <% if @photo.customer == current_customer %>
+          <%= link_to "編集", edit_photo_path(@photo), class: "btn btn-success btn-sm" %>
+          <%= link_to "削除", photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
+          <% end %>
+        </div>
+        <div class="card-body" style="height: 400px;">
+          <%= @photo.body %>
+        </div>
+        <div class="card-footer">
+         <%= render 'public/photo_comments/form_comment', photo: @photo, photo_comment: @photo_comment %>
+         <%= render 'public/photo_comments/index_comment', photo: @photo %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
