@@ -13,9 +13,12 @@ scope module: :public do
     resources :photo_comments, only: [:create, :destroy]
   end
     resources :customers, only: [:show, :edit, :update] do
-      resource :follows, onlr: [:create, :destroy]
+    resource :follows, onlr: [:create, :destroy]
        get 'followings' => 'follows#followings', as: 'followings'
       get 'followers' => 'follows#followers', as: 'followers'
+      member do
+        get :favorites
+      end
     end
     get 'search' => 'searches#search'
 

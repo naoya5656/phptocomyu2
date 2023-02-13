@@ -6,6 +6,10 @@ class Photo < ApplicationRecord
   has_many :favorites
   has_many :photo_comments, dependent: :destroy
 
+  validates :image, presence: true
+  validates :name, presence: true
+  validates :body, length:{maximum:100}
+
 
   def favorited_by?(customer)  #カスタマーidがfavoriteテーブル内に存在するかどうかを判別しているメソッド
       favorites.exists?(customer_id: customer.id)
@@ -13,13 +17,13 @@ class Photo < ApplicationRecord
 
   def self.looks(search, word)     #{word}に%を付けた位置で検索場所が変更できる
     if search == "perfect_match"
-      @photo = Photo.where("title LIKE?","#{word}") #完全一致
+      @photo = Photo.where("name LIKE?","#{word}") #完全一致
     elsif search == "forward_match"
-      @photo = Photo.where("title LIKE?","#{word}%") #前方一致
+      @photo = Photo.where("name LIKE?","#{word}%") #前方一致
     elsif search == "backward_match"
-      @photo = Photo.where("title LIKE?","%#{word}") #後方一致
+      @photo = Photo.where("name LIKE?","%#{word}") #後方一致
     elsif search == "partial_match"
-      @photo = Photo.where("title LIKE?","%#{word}%") #部分一致
+      @photo = Photo.where("name LIKE?","%#{word}%") #部分一致
     else
       @photo = Photo.all
     end

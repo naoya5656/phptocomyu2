@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <% if @photo.errors.any? %>
+       <%= @photo.errors.count %>件のエラーが発生しました
+         <ul>
+    <% @photo.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
       <%= form_with model:@photo do |f| %>
       <div class="form-group">
         <%= f.label :"写真をアップロード" %>

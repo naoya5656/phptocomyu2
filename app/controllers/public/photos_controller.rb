@@ -7,8 +7,11 @@ class Public::PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.customer_id = current_customer.id
-    @photo.save
+    if @photo.save
     redirect_to photos_path
+    else
+    render :new
+    end
   end
 
   def index

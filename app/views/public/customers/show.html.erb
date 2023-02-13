@@ -6,7 +6,8 @@
           <%= image_tag @customer.get_profile_image(90,90), class: "rounded-circle border border-secondary" %>
         </div>
         <div class="col-10 mb-3 ml-3">
-          <h3><%= @customer.name %></h3><br>
+          <h2><%= @customer.name %></h2>
+          <%= link_to "いいねした投稿", favorites_customer_path(@customer) %>
           <%= link_to customer_followings_path(@customer) do %>
           <strong><%= @customer.followings.count %></strong>フォロー
           <% end %>
