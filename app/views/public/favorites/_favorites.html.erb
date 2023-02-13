@@ -1,12 +1,12 @@
 <% if photo.favorited_by?(current_customer) %>
-  <%= link_to photo_favorites_path(photo), method: :delete, local: false do %>
+  <%= link_to photo_favorites_path(photo), method: :delete, remote: true do %>
     <i class="fas fa-heart" style="color: red"></i>
   <% end %>
   <%= photo.favorites.count %>
 
   <% else %>
-  <%= link_to photo_favorites_path(photo), method: :post, local: false do %>
-    <i class="far fa-heart"></i>
+  <%= link_to photo_favorites_path(photo), method: :post, remote: true do %>
+    <i class="fa-regular fa-heart"></i>
   <% end %>
   <%= photo.favorites.count %>
   <% end %>

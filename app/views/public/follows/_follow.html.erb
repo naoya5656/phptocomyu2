@@ -1,0 +1,7 @@
+
+<% if current_customer.followings?(customer) %>
+
+ <%= link_to "フォロー中", customer_follows_path(customer.id), method: :delete, data: {confirm: "フォローを解除しますか？"}, class: "btn btn-primary btn-sm rounded-pill" %>
+<% else %>
+ <%= link_to "フォローする", customer_follows_path(customer.id), method: :post, class: "btn btn-outline-primary btn-sm rounded-pill" %>
+<% end %>

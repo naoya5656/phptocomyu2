@@ -1,4 +1,8 @@
-<%= form_with model:[photo, photo_comment] do |f| %>
-<%= f.text_area :photo_comment, rows:'5',placeholder: "コメントをここに" %>
-<%= f.submit "送信" %>
+<%= form_with model:[photo, photo_comment], local: false do |f| %>
+<%= f.text_area :photo_comment, rows:'4',placeholder: "コメント", class:"form-control comment-textarea" %>
+<div class="text-right mt-3">
+  <%= button_tag type: "submit", class:"btn btn-primary" do %>
+  <i class="far fa-comments"></i>コメントする
+  <% end %>
+</div>
 <% end %>

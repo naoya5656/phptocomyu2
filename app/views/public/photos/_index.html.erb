@@ -4,13 +4,25 @@
       <%= link_to photo_path(photo) do %>
       <%= image_tag photo.image, width: '100%', height: '190px' %>
       <% end %>
-       <div class="card-body">
+        <div class="card-body">
           <%= link_to photo_path(photo) do %>
           <h4><%= photo.name %></h4>
           <% end %>
-          <h5><%= photo.customer.name %></h5>
-          <%= render 'public/favorites/favorites', photo: photo  %>
+          <div class="border-bottom">
+            <h5><%= photo.customer.name %></h5>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <div id ="favorites<%= photo.id %>">
+                <%= render 'public/favorites/favorites', photo: photo  %>
+              </div>
+            </div>
+            <div class="col-3">
+              <i class="fa-regular fa-comment"></i>
+              <%= photo.photo_comments.count %>
+            </div>
+          </div>
         </div>
     </div>
 </div>
-<% end %>
+<% end %> 

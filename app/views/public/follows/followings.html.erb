@@ -1,0 +1,22 @@
+<div class ="container">
+  <div class="row">
+    <div class="col mt-3">
+      <div class="row border-bottom">
+        <div class="col-1 mb-3">
+          <%= image_tag @customer.get_profile_image(90,90), class: "rounded-circle border border-secondary" %>
+        </div>
+        <div class="col-10 mb-3 ml-3">
+          <h3><%= @customer.name %></h3><br>
+          <strong><%= @customer.followings.count %></strong>フォロー
+          <strong class="ml-3"><%= @customer.followers.count %></strong>フォロワー
+          <% if @customer == current_customer %>
+            <%= link_to "プロフィール編集", edit_customer_path(current_customer), class: "btn btn-success btn-sm ml-3" %>
+          <% end %>
+          <div class="row">
+           <%= render 'public/follows/follow_list', customers: @customers %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

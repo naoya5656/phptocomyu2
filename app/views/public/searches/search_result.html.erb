@@ -1,0 +1,24 @@
+<h2>Results index</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "Customer" %>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがcustomerではない時( 検索対象モデルがphotokの時) -->
+    <tbody>
+      <% @photos.each do |photo| %>
+        <tr>
+          <td><%= photo.name %></td>
+          <td><%= photo.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

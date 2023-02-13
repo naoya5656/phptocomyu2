@@ -12,7 +12,13 @@ scope module: :public do
     resource :favorites, only: [:create, :destroy] #「s」をなくすことで、URLに/:idが含まれなくなり,1人のユーザーが1つの投稿にいいねを押すことが出来るのが１回のみなので、URLにparams[:id]を使わなくても良いので「ｓ」を無くした書き方
     resources :photo_comments, only: [:create, :destroy]
   end
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do
+      resource :follows, onlr: [:create, :destroy]
+       get 'followings' => 'follows#followings', as: 'followings'
+      get 'followers' => 'follows#followers', as: 'followers'
+    end
+    get 'search' => 'searches#search'
+
   end
 
 # 管理者用
@@ -24,6 +30,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 namespace :admin do
   resources :categories, only: [:new, :index, :create, :show]
 end
+
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
