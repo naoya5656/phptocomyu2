@@ -31,7 +31,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
 namespace :admin do
-  resources :categories, only: [:new, :index, :create, :show]
+  resources :categories, only: [:new, :index, :create, :show, :edit, :update, :destroy]
 end
 
 

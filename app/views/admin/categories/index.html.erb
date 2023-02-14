@@ -7,10 +7,15 @@
         <%= image_tag category.get_image, width: '100%', height: '190px' %>
         <% end %>
         <div class="card-body">
-          <h4><%= category.name %></h4>
+          <div>
+            <h5><%= category.name %></h5>
+          </div>
+            <div class="text-right">
+              <%= link_to '編集', edit_admin_category_path(category), class: "btn btn-success btn-sm" %>
+              <%= link_to "削除", admin_category_path(category), method: :delete, class: "btn btn-danger btn-sm" %>
+            </div>
         </div>
       </div>
-
     </div>
     <% end %>
   </div>

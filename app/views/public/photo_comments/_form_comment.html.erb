@@ -1,3 +1,6 @@
+<div id="comments-error">
+<%= render 'layouts/error_messages', obj: photo_comment %>
+</div>
 <%= form_with model:[photo, photo_comment], local: false do |f| %>
 <%= f.text_area :photo_comment, rows:'4',placeholder: "コメント", class:"form-control comment-textarea" %>
 <div class="text-right mt-3">

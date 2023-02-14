@@ -2,6 +2,9 @@ class Category < ApplicationRecord
    has_many :photo_category_relations  #中間テーブルを先に記述しないとActiveRecord::HasManyThroughOrderErrorというエラーが発生
    has_many :photos, through: :photo_category_relations #中間テーブルのpost_category_relationsを経由して、関連付けをすることを意味している
    has_one_attached :image
+   
+   validates :image, presence: true
+   validates :name, length: {in: 1..10}, uniqueness: true, presence: true
 
    def get_image
      if image.attached?

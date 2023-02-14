@@ -10,18 +10,17 @@
       <% if @range == "ユーザー名" %>
       <div class="row">
         <% @customers.each do |customer| %>
-        <div class="col-sm-4 mt-3">
+        <div class="col-sm-6 mt-3">
           <div class="card-body mx-auto shadow-sm" style="background-color:#EEEEEE;">
             <div class="row">
               <div class="col-2">
                 <%= image_tag customer.get_profile_image(70,70), class: "rounded-circle border border-secondary" %>
-                </div>
-                <div class="col-9 ml-3">
-                  <%= customer.name %>
-                  <%= render 'public/follows/follow', customer: customer %>
-                  フォロー数: <%= customer.followings.count %>
-                  フォロワー数: <%= customer.followers.count %>
-                </div>
+              </div>
+              <div class="col-9 ml-3">
+                <h4><%= customer.name %></h4>
+                <strong><%= customer.followings.count %></strong>フォロー
+                <strong class="ml-3"><%= customer.followers.count %></strong>フォロワー
+                <%= render 'public/follows/follow', customer: customer %>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= form_with model:[:admin, @category] do |f| %>
+      <%= form_with model: [:admin, @category] do |f| %>
       <div class="form-group">
         <%= f.label :"カテゴリーイメージ" %>
         <div>
@@ -13,9 +13,10 @@
         <div>
           <%= f.text_field :name, class:"form-control" %>
         </div>
-        <%= f.submit '追加する' %>
-        <% end %>
       </div>
+      <%= f.submit '変更する' %>
+      <% end %>
+
     </div>
   </div>
 </div>

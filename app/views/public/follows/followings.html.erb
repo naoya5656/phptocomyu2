@@ -7,8 +7,12 @@
         </div>
         <div class="col-10 mb-3 ml-3">
           <h2><%= @customer.name %></h2><br>
+          <%= link_to customer_followings_path(@customer) do %>
           <strong><%= @customer.followings.count %></strong>フォロー
+          <% end %>
+          <%= link_to customer_followers_path(@customer) do %>
           <strong class="ml-3"><%= @customer.followers.count %></strong>フォロワー
+          <% end %>
           <% if @customer == current_customer %>
             <%= link_to "プロフィール編集", edit_customer_path(current_customer), class: "btn btn-success btn-sm ml-3" %>
           <% end %>

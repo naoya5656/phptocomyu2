@@ -18,6 +18,8 @@ class Customer < ApplicationRecord
 
          #フォロワー表示
          has_many :followers, through: :followeds, source: :follower
+         
+         validates :name, length: {in: 1..20}, uniqueness: true
 
          #フォローした時の処理
          def follow(customer_id)
