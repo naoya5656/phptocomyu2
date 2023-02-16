@@ -1,0 +1,32 @@
+<div class ="container">
+  <div class="row">
+    <div class="col border-bottom mt-3">
+          <h2>ユーザー</h2>
+    </div>
+    <div class="row">
+        <% @customers.each do |customer| %>
+        <div class="col-sm-6 mt-3">
+            <div class="card-body mx-auto shadow-sm" style="background-color:#EEEEEE;">
+              <div class="row">
+                <div class="col-2">
+                  <%= link_to admin_customer_path(customer) do %>
+                    <%= image_tag customer.get_profile_image(70,70), class: "rounded-circle border border-secondary" %>
+                  <% end %>
+                </div>
+                <div class="col-9 ml-3">
+                  <h4><%= customer.name %></h4>
+                  
+                    <strong><%= customer.followings.count %></strong>フォロー
+                  
+                  
+                    <strong class="ml-3"><%= customer.followers.count %></strong>フォロワー
+                  
+                  <%= link_to "編集", edit_admin_customer_path(customer), customer: @customer %>
+                </div>
+              </div>
+            </div>
+         </div>
+        <% end %> 
+    </div>
+  </div>
+</div>

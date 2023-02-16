@@ -3,10 +3,8 @@
     <div class="col-10 mx-auto mt-3">
       <div class="border-bottom border-4">
         <h4><%= @photo.name %></h4>
-        <% if @photo.customer == current_customer %>
-          <%= link_to "編集", edit_photo_path(@photo), class: "btn btn-success btn-sm" %>
+        
           <%= link_to "削除", photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
-        <% end %>
       </div>
     </div>
     <div class="w-100"></div>
@@ -32,20 +30,12 @@
               投稿日:<%= @photo.created_at.strftime('%Y/%m/%d %H:%M') %><br>
               <div class="row">
                 <div class="col-1">
-                  <div id ="favorites<%= @photo.id %>">
-                    <%= render 'public/favorites/favorites', photo: @photo  %>
-                  </div>
+                  <i class="fa-regular fa-heart"></i>
+                  <%= @photo.favorites.count %>
                 </div>
                 <div class="col-0">
-                  <div id="comments-counter">
-                    <%= render 'public/photo_comments/comments_counter', photo: @photo %>
-                  </div>
-                </div>
-                <div class="col-2">
-                  <% if @photo.customer == current_customer %>
-                  <% else %>
-                  <%= render 'public/follows/follow', customer: @photo.customer %>
-                  <% end %>
+                  <i class="fa-regular fa-comment"></i>
+                  <%= @photo.photo_comments.count %>
                 </div>
               </div>
             </div>
@@ -55,9 +45,8 @@
           <%= @photo.body %>
         </div>
         <div class="card-footer">
-          <%= render 'public/photo_comments/form_comment', photo: @photo, photo_comment: @photo_comment %>
           <div class="photo-comments-index">
-            <%= render 'public/photo_comments/index_comments', photo: @photo %>
+            <%= render 'admin/photo_comments/index_comments', photo: @photo %>
           </div>
         </div>
       </div>

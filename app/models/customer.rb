@@ -20,6 +20,19 @@ class Customer < ApplicationRecord
          has_many :followers, through: :followeds, source: :follower
          
          validates :name, length: {in: 1..20}, uniqueness: true
+         
+         def active_for_authentication?    # is_deletedがfalseならtrueを返すようにしている(ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約)
+             super && (is_deleted == false)
+         end
+         
+         
+         def self.guest
+           find_or_create_by!(email: 'aaa@aaa.com') do |customer|
+           customer.password = SecureRandom.urlsafe_base64
+           customer.password_confirmation = customer.password
+           customer.name = 'ゲスト'
+           end
+         end
 
          #フォローした時の処理
          def follow(customer_id)

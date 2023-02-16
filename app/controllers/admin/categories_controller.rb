@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :is_matching_login_admin, only: [:edit, :update]
 
   def new
     @category = Category.new
@@ -6,8 +7,11 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.save
+    if @category.save
     redirect_to admin_categories_path
+    else
+    render :new
+    end
   end
 
   def index
@@ -41,5 +45,12 @@ class Admin::CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit(:name, :image)
+  end
+  
+  def is_matching_login_admin
+    category = Category.find(params[:id])
+    unless admins == current_customer.id
+      redirect_to admin_categories_path
+    end 
   end
 end

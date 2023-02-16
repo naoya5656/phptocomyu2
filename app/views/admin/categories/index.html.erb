@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <div class="col mt-5 border-bottom">
+      <h3>カテゴリー</h3>
+    </div>
+  </div>
+  <div class="row">
     <% @categories.each do |category| %>
     <div class="col-sm-3 mt-3">
       <div class="card mx-auto shadow">
@@ -9,11 +14,14 @@
         <div class="card-body">
           <div>
             <h5><%= category.name %></h5>
+            投稿数: <%= category.photos.count %>
           </div>
+          <% if admin_signed_in? %>
             <div class="text-right">
               <%= link_to '編集', edit_admin_category_path(category), class: "btn btn-success btn-sm" %>
               <%= link_to "削除", admin_category_path(category), method: :delete, class: "btn btn-danger btn-sm" %>
             </div>
+          <% end %>
         </div>
       </div>
     </div>

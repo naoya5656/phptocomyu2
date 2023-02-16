@@ -48,4 +48,12 @@ class Public::PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:name, :body, :image, category_ids: []) #category_ids: [] 投稿に紐付くカテゴリは、チェックボックスによって複数渡される場合があるため、配列形式であることを記載
   end
+  
+  def is_matching_login_user
+    photo = Photo.find(params[:id])
+    customer_id = photo.customer.id
+    unless user_id == current_customer.id
+      redirect_to photos_path
+    end
+   end
 end

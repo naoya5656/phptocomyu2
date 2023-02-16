@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2023_02_12_070334) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_deleted", default: false
+    t.boolean "is_deleted", default: false  #論理削除
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
