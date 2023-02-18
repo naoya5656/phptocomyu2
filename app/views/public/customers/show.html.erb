@@ -1,6 +1,9 @@
 <div class ="container">
   <div class="row">
     <div class="col mt-3">
+      <% if @customer.name == "ゲスト" %>
+        <%= render partial: 'layouts/flash' %>
+      <% end %>
       <div class="row border-bottom">
         <%= render 'public/customers/myprofile', customer: @customer %>
       </div>

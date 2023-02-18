@@ -36,7 +36,7 @@ class Public::SessionsController < Devise::SessionsController
         flash[:notice] = "項目を入力してください"
       end
     end
-  end
+   end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

@@ -21,7 +21,10 @@
                   <%= link_to customer_followers_path(customer) do %>
                     <strong class="ml-3"><%= customer.followers.count %></strong>フォロワー
                   <% end %>
+                  <% if customer == current_customer %>
+                  <% else %>
                   <%= render 'public/follows/follow', customer: customer %>
+                  <% end %>
                 </div>
               </div>
             </div>

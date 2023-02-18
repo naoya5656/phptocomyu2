@@ -27,8 +27,8 @@ class Customer < ApplicationRecord
          
          
          def self.guest
-           find_or_create_by!(email: 'aaa@aaa.com') do |customer|
-           customer.password = SecureRandom.urlsafe_base64
+           find_or_create_by!(email: 'aaa@aaa.com') do |customer| #find_or_create_byはデータの検索と作成を自動的に判断して処理を行う、Railsのメソッド
+           customer.password = SecureRandom.urlsafe_base64 #SecureRandom.urlsafe_base64はランダムな文字列を生成するRubyのメソッド
            customer.password_confirmation = customer.password
            customer.name = 'ゲスト'
            end

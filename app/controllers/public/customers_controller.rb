@@ -1,12 +1,14 @@
 class Public::CustomersController < ApplicationController
     before_action :is_matching_login_customer, only: [:edit, :update]
+    before_action :ensure_guest_customer, only: [:edit]
+    
   def show
     @customer = Customer.find(params[:id])
     @photos = @customer.photos
   end
   
   def index
-    @customers = Customers.all
+    @customers = Customer.all
   end
 
   def edit
@@ -14,9 +16,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-  @customer =Customer.find(params[:id])
-  @customer.update(customer_params)
-  redirect_to customer_path(current_customer)
+    @customer =Customer.find(params[:id])
+    @customer.update(customer_params)
+    if admin_signed_in?
+      redirect_to admin_customer_path(@customer)
+      return
+    else
+      redirect_to customer_path(current_customer)
+    end
   end
   
   def favorites
@@ -41,8 +48,19 @@ class Public::CustomersController < ApplicationController
   
   def is_matching_login_customer   
     customer_id = params[:id].to_i
+    if admin_signed_in?
+      return
+    end
     unless customer_id == current_customer.id    
       redirect_to customer_path(current_customer) 
     end
   end
+  
+  def ensure_guest_customer
+    @customer = Customer.find(params[:id])
+    if @customer.name == "ゲスト"
+      flash[:danger] = 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to customer_path(current_customer)
+    end
+  end  
 end

@@ -4,7 +4,7 @@
       <div class="border-bottom border-4">
         <h4><%= @photo.name %></h4>
         
-          <%= link_to "削除", photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
+          <%= link_to "削除", admin_photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
       </div>
     </div>
     <div class="w-100"></div>

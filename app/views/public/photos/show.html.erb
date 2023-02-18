@@ -5,7 +5,7 @@
         <h4><%= @photo.name %></h4>
         <% if @photo.customer == current_customer %>
           <%= link_to "編集", edit_photo_path(@photo), class: "btn btn-success btn-sm" %>
-          <%= link_to "削除", photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
+          <%= link_to "削除", photo_path(@photo), method: :delete,data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm" %>
         <% end %>
       </div>
     </div>

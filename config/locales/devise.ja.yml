@@ -33,6 +33,11 @@ ja:
         image: 画像
       photo_comment: 
         photo_comment: コメント
+      customer: 
+        password: パスワード
+        email: メールアドレス
+        name: 名前
+        password_confirmationn: パスワード確認
     models:
       user: ユーザー
       photo: 

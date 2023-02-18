@@ -104,8 +104,13 @@
                 <% end %>
               </li>
               <li class="mr-2">
-                <%= link_to  new_customer_session_path, class: 'nav-link btn btn-outline-secondary text-dark btn-sm' do %>
+                <%= link_to new_customer_session_path, class: 'nav-link btn btn-outline-secondary text-dark btn-sm' do %>
                 ログイン
+              <% end %>
+              </li>
+               <li class="mr-2">
+                <%= link_to customers_guest_sign_in_path, method: :post, class: "login nav-link btn btn-outline-secondary text-dark btn-sm" do %>
+                ゲストログイン（閲覧用）
               <% end %>
               </li>
               <%= render 'public/searches/search' %>

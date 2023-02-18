@@ -16,7 +16,9 @@
     <strong class="ml-3"><%= customer.followers.count %></strong>フォロワー
   <% end %>
   <% if @customer == current_customer %>
+  <% if customer.name != "ゲスト" %>
     <%= link_to "プロフィール編集", edit_customer_path(current_customer), class: "btn btn-success btn-sm ml-3" %>
+  <% end %>
   <% end %>
   <% if @photos == current_customer.photos %>
   <% else %>
