@@ -42,6 +42,8 @@ class Admin::CategoriesController < ApplicationController
     @category.destroy
     redirect_to admin_categories_path
   end
+  
+  
   private
   def category_params
     params.require(:category).permit(:name, :image)

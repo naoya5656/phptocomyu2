@@ -4,7 +4,7 @@
   <% end %>
 </div>
 
-<div class="col-10 mb-3 ml-3">
+<div class="col-4 mb-3 ml-3">
   <div class="mb-2">
     <h2><%= customer.name %></h2>
     <%= link_to "お気に入り", favorites_customer_path(customer), class: "btn btn-danger btn-sm" %>
@@ -24,4 +24,10 @@
   <% else %>
     <%= render 'public/follows/follow', customer: customer %>
   <% end %>
+</div>
+<div class="col-6 border-left mb-3">
+  <strong>自己紹介</strong>
+  <p class="text-break">
+    <%= customer.introduction %>
+  </p>
 </div>

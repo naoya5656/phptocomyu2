@@ -20,6 +20,7 @@ class Customer < ApplicationRecord
          has_many :followers, through: :followeds, source: :follower
          
          validates :name, length: {in: 1..20}, uniqueness: true
+         validates :introduction, length:{maximum:200}
          
          def active_for_authentication?    # is_deletedがfalseならtrueを返すようにしている(ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約)
              super && (is_deleted == false)

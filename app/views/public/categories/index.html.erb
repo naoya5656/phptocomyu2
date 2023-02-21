@@ -8,18 +8,14 @@
     <% @categories.each do |category| %>
     <div class="col-sm-3 mt-3">
       <div class="card mx-auto shadow">
-        <%= link_to admin_category_path(category) do %>
+        <%= link_to category_path(category) do %>
         <%= image_tag category.get_image, width: '100%', height: '190px' %>
         <% end %>
         <div class="card-body">
           <div>
-            <h5><%= category.name %></h5>
+            <h5><strong><%= category.name %></strong></h5>
             投稿数: <%= category.photos.count %>
           </div>
-            <div class="text-right">
-              <%= link_to '編集', edit_admin_category_path(category), class: "btn btn-success btn-sm" %>
-              <%= link_to "削除", admin_category_path(category), method: :delete, class: "btn btn-danger btn-sm" %>
-            </div>
         </div>
       </div>
     </div>

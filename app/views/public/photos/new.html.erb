@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-7 mx-auto mt-5">
       <%= render 'layouts/error_messages', obj: @photo %>
       <%= form_with model:@photo do |f| %>
       <div class="form-group">
@@ -19,14 +19,17 @@
         <div><%= f.label :body, "写真の本文" %></div>
         <div><%= f.text_area :body, class:"form-control" %></div>
       </div>
-      <%= f.label :category, "カテゴリ" %>
+      <%= f.label :category, "カテゴリ" %><br>
       <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
         <%= category.label do %>
+        <div class="mr-3">
           <%=category.check_box %>
           <%=category.text %>
+        </div>
         <% end %>
       <% end %>
-      <%= f.submit '投稿する' %>
+      <br>
+      <%= f.submit '投稿する', class:"btn btn-primary" %>
       <% end %>
 
     </div>

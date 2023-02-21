@@ -14,7 +14,13 @@
             <% end %>
             <div class="card-body">
               <%= link_to photo_path(photo) do %>
-                <h4><%= photo.name %></h4>
+                <div class='review-text-sentence'>
+                  <% if photo.name.length >= 9 %>
+                    <h4><%= photo.name.slice(0,8) %>...</h4>
+                  <% else %>
+                    <h4><%= photo.name %></h4>
+                  <% end %>
+                </div>
               <% end %>
               <div class="border-bottom">
                 <h5><%= photo.customer.name %></h5>

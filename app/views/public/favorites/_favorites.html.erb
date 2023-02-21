@@ -6,7 +6,7 @@
 
   <% else %>
   <%= link_to photo_favorites_path(photo), method: :post, remote: true do %>
-    <i class="fa-regular fa-heart"></i>
+    <i class="far fa-heart"></i>
   <% end %>
   <%= photo.favorites.count %>
   <% end %>

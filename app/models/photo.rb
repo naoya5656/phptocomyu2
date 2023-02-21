@@ -3,7 +3,7 @@ class Photo < ApplicationRecord
   belongs_to :customer
   has_many :photo_category_relations #中間テーブルを先に記述しないとActiveRecord::HasManyThroughOrderErrorというエラーが発生
   has_many :categories, through: :photo_category_relations #中間テーブルのphoto_category_relationsを経由して、関連付けている。
-  has_many :favorites
+  has_many :favorites, dependent: :destroy 
   has_many :photo_comments, dependent: :destroy
 
   validates :image, presence: true

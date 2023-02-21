@@ -16,8 +16,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer =Customer.find(params[:id])
-    @customer.update(customer_params)
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer)
+      return
+    else
+      render :edit
+      return
+    end
     if admin_signed_in?
       redirect_to admin_customer_path(@customer)
       return
@@ -43,7 +49,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :profile_image)
+    params.require(:customer).permit(:name, :introduction, :profile_image)
   end
   
   def is_matching_login_customer   
