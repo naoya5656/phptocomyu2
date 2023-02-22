@@ -4,7 +4,7 @@
       <div class="border-bottom border-4">
         <h4><%= @photo.name %></h4>
         
-          <%= link_to "削除", admin_photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
+          <%= link_to "削除", admin_photo_path(@photo), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm" %>
       </div>
     </div>
     <div class="w-100"></div>
@@ -19,22 +19,22 @@
         <div class="card-header">
           <div class="row">
             <div class="col-1">
-              <%= link_to customer_path(@photo.customer) do %>
+              <%= link_to admin_customer_path(@photo.customer) do %>
                 <%= image_tag @photo.customer.get_profile_image(80,80), class: "rounded-circle border border-secondary" %>
               <% end %>
             </div>
             <div class="col-11">
-              <%= link_to customer_path(@photo.customer) do %>
+              <%= link_to admin_customer_path(@photo.customer) do %>
               <h4 style="margin-right : 10px"><strong><%= @photo.customer.name %></strong></h4>
               <% end %>
               投稿日:<%= @photo.created_at.strftime('%Y/%m/%d %H:%M') %><br>
               <div class="row">
                 <div class="col-1">
-                  <i class="fa-regular fa-heart"></i>
+                  <i class="far fa-heart"></i>
                   <%= @photo.favorites.count %>
                 </div>
                 <div class="col-0">
-                  <i class="fa-regular fa-comment"></i>
+                  <i class="far fa-comment"></i>
                   <%= @photo.photo_comments.count %>
                 </div>
               </div>

@@ -14,7 +14,7 @@
       <%= photo_comment.photo_comment %>
     </div>
     <div class="text-right">
-      <%= link_to "削除", photo_photo_comment_path(photo, photo_comment), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger pull-right" %>
+      <%= link_to "削除", admin_photo_photo_comment_path(photo, photo_comment), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger pull-right" %>
     </div>
   </div>
 </div>

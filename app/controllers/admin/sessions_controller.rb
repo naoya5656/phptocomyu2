@@ -5,10 +5,12 @@ class Admin::SessionsController < Devise::SessionsController
   
   protected
   def after_sign_in_path_for(resource)
+    flash[:success] = "ログインしました"
     admin_customers_path
   end
 
   def after_sign_out_path_for(resource)
+    flash[:danger] = "ログアウトしました"
     new_admin_session_path
   end
 

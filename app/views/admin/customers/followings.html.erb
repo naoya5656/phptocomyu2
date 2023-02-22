@@ -1,0 +1,12 @@
+<div class ="container">
+  <div class="row">
+    <div class="col mt-3">
+      <div class="row border-bottom">
+        <%= render 'admin/customers/customer_profile', customer: @customer %>
+      </div>
+      <div class="row">
+        <%= render 'admin/customers/follow_list', customers: @customers %>
+      </div>
+    </div>
+  </div>
+</div>

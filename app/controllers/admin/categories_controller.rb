@@ -1,5 +1,5 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :is_matching_login_admin, only: [:edit, :update]
+  
 
   def new
     @category = Category.new
@@ -8,6 +8,7 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
+    flash[:success] = "カテゴリーを追加しました"
     redirect_to admin_categories_path
     else
     render :new
@@ -30,7 +31,7 @@ class Admin::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-    flash[:notice] = "変更しました"
+    flash[:success] = "カテゴリーを変更しました"
     redirect_to admin_categories_path(@category)
     else
     render :edit
@@ -40,6 +41,7 @@ class Admin::CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
+    flash[:danger] = "カテゴリーを削除しました"
     redirect_to admin_categories_path
   end
   
@@ -49,10 +51,4 @@ class Admin::CategoriesController < ApplicationController
     params.require(:category).permit(:name, :image)
   end
   
-  def is_matching_login_admin
-    category = Category.find(params[:id])
-    unless admins == current_customer.id
-      redirect_to admin_categories_path
-    end 
-  end
 end

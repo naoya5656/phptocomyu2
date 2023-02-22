@@ -1,0 +1,3 @@
+// console.log("follows<%= @customer.id %>_destroy");
+$("#follows<%= @customer.id %>").html("<%= j(render 'public/follows/follow', customer: @customer) %>");
+$("#follow-counter<%= @customer.id %>").html("<%= j(render 'public/follows/follow_counter', customer: @customer) %>");

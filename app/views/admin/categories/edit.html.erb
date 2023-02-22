@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-7 mx-auto mt-3">
+      <h4 class="py-4 border-bottom mb-3">カテゴリー編集</h4>
       <%= form_with model: [:admin, @category] do |f| %>
-      <div class="form-group">
+      <div class="form-group mb-3">
         <%= f.label :"カテゴリーイメージ" %>
         <div>
           <%= f.file_field :image, accept: "image/*" %>
@@ -14,7 +15,7 @@
           <%= f.text_field :name, class:"form-control" %>
         </div>
       </div>
-      <%= f.submit '変更する' %>
+      <%= f.submit '変更する', class:"btn btn-success" %>
       <% end %>
 
     </div>

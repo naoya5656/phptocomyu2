@@ -6,7 +6,8 @@ class Public::SessionsController < Devise::SessionsController
   def new_guest
     customer = Customer.guest
     sign_in customer # ユーザーをログインさせる
-    redirect_to root_path
+    flash[:success] = "ゲストでログインしました"
+    redirect_to photos_path
   end
 
   # GET /resource/sign_in
@@ -26,7 +27,7 @@ class Public::SessionsController < Devise::SessionsController
 
    protected
    
-   def reject_user
+   def reject_customer
     @customer = Customer.find_by(name: params[:customer][:name])
     if @customer 
       if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == false)

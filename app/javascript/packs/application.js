@@ -19,3 +19,11 @@ require('jquery')
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+
+$(function(){
+  setTimeout("$('.alert').fadeOut('slow')", 4000);
+});
+
+

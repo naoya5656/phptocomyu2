@@ -8,6 +8,7 @@ class Public::PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.customer_id = current_customer.id
     if @photo.save
+      flash[:success] = "投稿に成功しました"
     redirect_to photos_path
     else
     render :new
@@ -15,7 +16,7 @@ class Public::PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.all
+    @photos = Photo.all.order(created_at: :DESC)
   end
 
   def show
@@ -30,7 +31,7 @@ class Public::PhotosController < ApplicationController
   def update
     @photo = Photo.find(params[:id])
     if @photo.update(photo_params)
-    flash[:notice] = "変更しました"
+    flash[:success] = "投稿を変更しました"
     redirect_to photo_path(@photo)
     else
     render :edit
@@ -40,6 +41,7 @@ class Public::PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
+    flash[:danger] = "投稿を削除しました"
     redirect_to photos_path
   end
 

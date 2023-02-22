@@ -9,6 +9,7 @@ class Public::CustomersController < ApplicationController
   
   def index
     @customers = Customer.all
+    @customers
   end
 
   def edit
@@ -39,7 +40,7 @@ class Public::CustomersController < ApplicationController
   end
   
   def withdrawal
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @customer.update(is_deleted: true)  # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     reset_session
     flash[:notice] = "退会処理を実行いたしました"

@@ -14,20 +14,16 @@
           <div class="card-body mx-auto shadow-sm" style="background-color:#EEEEEE;">
             <div class="row">
               <div class="col-2">
-                <%= link_to customer_path(customer) do %>
+                <%= link_to admin_customer_path(customer) do %>
                   <%= image_tag customer.get_profile_image(70,70), class: "rounded-circle border border-secondary" %>
                 <% end %>
               </div>
               <div class="col-9 ml-3">
-                <%= link_to customer_path(customer) do %>
+                <%= link_to admin_customer_path(customer) do %>
                   <h4><%= customer.name %></h4>
                 <% end %>
-                <div id="follow-counter<%= customer.id %>">
-                  <%= render 'public/follows/follow_counter', customer: customer %>
-                </div>
-                <div id="follows<%= customer.id %>">
-                  <%= render 'public/follows/follow', customer: customer %>
-                </div>
+                <strong><%= customer.followings.count %></strong>フォロー
+                <strong class="ml-3"><%= customer.followers.count %></strong>フォロワー
               </div>
             </div>
           </div>
@@ -37,7 +33,7 @@
       <% else %>
         <!--検索対象モデルがcustomerではない時( 検索対象モデルがphotoの時) -->
       <div class="row">
-        <%= render 'public/photos/index', photos: @photos %>
+        <%= render 'admin/photos/index', photos: @photos %>
       </div>
       <% end %>
     </div>

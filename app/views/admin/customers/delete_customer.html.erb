@@ -4,12 +4,11 @@
 <div class ="container">
   <div class="row">
     <div class="col border-bottom mt-5">
-          <h2>ユーザー</h2>
-          <%= link_to "退会者" %>
+          <h2>退会ユーザー</h2>
     </div>
   </div>
     <div class="row">
-        <% @customers.each do |customer| %>
+        <% @customer.each do |customer| %>
         <div class="col-sm-6 mt-3">
             <div class="card-body mx-auto shadow-sm" style="background-color:#EEEEEE;">
               <div class="row">

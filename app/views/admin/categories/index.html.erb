@@ -1,3 +1,6 @@
+<div class="text-center">
+<%= render partial: 'layouts/flash', class: "text-center" %>
+</div>
 <div class="container">
   <div class="row">
     <div class="col mt-5 border-bottom">
@@ -18,7 +21,7 @@
           </div>
             <div class="text-right">
               <%= link_to '編集', edit_admin_category_path(category), class: "btn btn-success btn-sm" %>
-              <%= link_to "削除", admin_category_path(category), method: :delete, class: "btn btn-danger btn-sm" %>
+              <%= link_to "削除", admin_category_path(category), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm" %>
             </div>
         </div>
       </div>

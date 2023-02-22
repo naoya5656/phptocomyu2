@@ -1,3 +1,6 @@
+<div class="text-center">
+<%= render partial: 'layouts/flash' %>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-10 mx-auto mt-3">
@@ -5,7 +8,7 @@
         <h4><%= @photo.name %></h4>
         <% if @photo.customer == current_customer %>
           <%= link_to "編集", edit_photo_path(@photo), class: "btn btn-success btn-sm" %>
-          <%= link_to "削除", photo_path(@photo), method: :delete,data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm" %>
+          <%= link_to "削除", photo_path(@photo), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm" %>
         <% end %>
       </div>
     </div>
@@ -44,7 +47,9 @@
                 <div class="col-2">
                   <% if @photo.customer == current_customer %>
                   <% else %>
-                  <%= render 'public/follows/follow', customer: @photo.customer %>
+                  <div id="follows<%= @photo.customer.id %>">
+                    <%= render 'public/follows/follow', customer: @photo.customer %>
+                  </div>
                   <% end %>
                 </div>
               </div>

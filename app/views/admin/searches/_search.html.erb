@@ -1,5 +1,5 @@
 <div class="search_form ml-auto mb-3", style="display:flex; justify-content:end;">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
+  <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
     <%= f.text_field :word %>
     <%= f.select :range, options_for_select([['ユーザー名'], ['写真']]) %>
     <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>

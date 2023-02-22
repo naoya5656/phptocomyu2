@@ -1,13 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-7 mx-auto px-0 mt-5 text-center">
-      <h4 class="py-4">プロフィール編集</h4>
+    <div class="col-7 mx-auto mt-3">
+      <h4 class="py-4 border-bottom">プロフィール編集</h4>
       <%= render 'layouts/error_messages', obj: @customer %>
       <%= form_with model: @customer do |f| %>
           <div class="form-group text-left">
-            <%= f.label :profile_image, "プロフィール画像" %>
-          </div>
-          <div class="text-left">
+            <%= f.label :profile_image, "プロフィール画像" %><br>
             <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
           </div>
           <div class="input-group mb-3 mt-3">
@@ -19,12 +17,11 @@
               <%= f.text_field :name, placeholder: "ニックネーム", autofocus: true, autocomplete: "name", class:"form-control" %>
           </div>
           <div class="input-group mb-3 mt-3">
-            
-              <%= f.text_area :introduction, placeholder: "自己紹介",rows: 4,  autofocus: true, autocomplete: "name", class:"form-control" %>
+            <%= f.text_area :introduction, placeholder: "自己紹介",rows: 4,  autofocus: true, autocomplete: "name", class:"form-control" %>
           </div>
-      
-      <%= f.submit "変更する" %>
+          <%= f.submit '変更する', class:"btn btn-success" %>
       <% end %>
+      <%= link_to '退会する', customers_unsubscribe_path, class: 'btn btn-danger mt-3' %>
     </div>
   </div>
 </div>
