@@ -14,7 +14,7 @@
           <%= link_to "お気に入り", favorites_customer_path(customer), class: "btn btn-danger btn-sm mb-2" %>
       </tr>
       <tr>
-        <div id="follow-counter<%= customer.id %>">
+        <div class="mb-2">
           <%= render 'public/follows/follow_counter', customer: customer %>
         </div>
       </tr>
@@ -26,9 +26,7 @@
         <% end %>
         <% if customer == current_customer %>
         <% else %>
-          <div id ="follows<%= customer.id %>">
             <%= render 'public/follows/follow', customer: customer %>
-          </div>
         <% end %>
       </tr>
     </tbody>

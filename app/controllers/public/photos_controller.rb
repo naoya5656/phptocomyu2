@@ -16,7 +16,8 @@ class Public::PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.all.order(created_at: :DESC)
+    @photos = Photo.all.order(created_at: :DESC).page(params[:page])
+    # @photos = Photo.page(params[:page])
   end
 
   def show

@@ -4,12 +4,11 @@ class Public::CustomersController < ApplicationController
     
   def show
     @customer = Customer.find(params[:id])
-    @photos = @customer.photos
+    @photos = @customer.photos.order(created_at: :DESC)
   end
   
   def index
-    @customers = Customer.all
-    @customers
+    @customers = Customer.all.order(created_at: :DESC).page(params[:page])
   end
 
   def edit

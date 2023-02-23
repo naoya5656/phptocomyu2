@@ -2,4 +2,7 @@
   <div class="row">
     <%= render 'admin/photos/index', photos: @photos  %>
   </div>
+  <div class="mt-5">
+    <%= paginate @photos %>
+  </div>
 </div>

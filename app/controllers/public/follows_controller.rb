@@ -1,28 +1,27 @@
 class Public::FollowsController < ApplicationController
-
-  # フォローするとき
+    
+    # フォローするとき
   def create
     current_customer.follow(params[:customer_id])
-    @customer = Customer.find(params[:customer_id])
-   # render :follows
+    redirect_to request.referer
   end
-
+ 
   # フォロー外すとき
   def destroy
     current_customer.unfollow(params[:customer_id])
-    @customer = Customer.find(params[:customer_id])
-   # render :follows
+    redirect_to request.referer  
   end
-
-  # フォロー一覧
+  
+   # フォロー一覧
   def followings
     @customer = Customer.find(params[:customer_id])
     @customers = @customer.followings
   end
-
-  # フォロワー一覧
+  
+   # フォロワー一覧
   def followers
     @customer = Customer.find(params[:customer_id])
     @customers = @customer.followers
   end
+  
 end

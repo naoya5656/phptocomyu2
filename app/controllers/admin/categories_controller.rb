@@ -21,7 +21,7 @@ class Admin::CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @photos = @category.photos
+    @photos = @category.photos.order(created_at: :DESC).page(params[:page])
   end
   
   def edit

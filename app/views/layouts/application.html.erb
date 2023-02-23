@@ -29,7 +29,7 @@
             
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <div class="row">
-              <ul class="navbar-nav ml-auto ">
+              <ul class="navbar-nav ml-auto">
                 <% if admin_signed_in? %>
   
                 <li class="mr-2">
@@ -118,5 +118,47 @@
           </div>
     </header>
     <%= yield %>
+    <footer class="py-3 bg-footer mt-3 text-white" style="background-color:#444444;">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>PhotoComyu</h2>
+            <div class="offset-5 row">
+              <div class="col">
+                
+                トップ
+              </div>
+              <div class="col">
+                投稿一覧
+              </div>
+              <div class="col">
+              　カテゴリー
+              </div>
+              <div class="col">
+                投稿する
+              </div>
+              <div class="col">
+                マイページ
+              </div>
+            </div>
+            <div class="row">
+              <div class="offset-5 col-1 mt-3">
+                <%= link_to 'https://www.twitter.com/@ratatosuku001' do %>
+                  <%= image_tag 'twitter.png', width: '40px', height: '40px' %>
+                <% end %>
+              </div>
+              <div class="col mt-3">
+                <%= link_to 'https://www.instagram.com/naotopia' do %>
+                  <%= image_tag 'insta-fu.png', width: '40px', height: '40px' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer class="py-1 bg-footer text-secondary text-center" style="background-color:#111111;">
+       <p>© 2023,PHOTOCOMYU, © 2023 naoyaPF Japan</p>
+    <footer> 
   </body>
 </html>

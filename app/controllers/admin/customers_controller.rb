@@ -3,11 +3,11 @@ before_action :is_admin_access
 before_action :authenticate_admin!
 
  def index
-  @customers = Customer.all
+  @customers = Customer.all.order(created_at: :DESC).page(params[:page])
  end
  
  def show
-  @customer = Customer.find(params[:id])
+  @customer = Customer.find(params[:id]).order(created_at: :DESC)
   @photos = @customer.photos
  end
  
