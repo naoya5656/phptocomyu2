@@ -1,8 +1,8 @@
 <% if customer == current_customer %>
 <% else %>
 <% if current_customer.followings?(customer) %>
- <%= link_to "フォロー中", customer_follows_path(customer.id), method: :delete, remote: true, data: {confirm: "フォローを解除しますか？"}, class: "btn btn-primary btn-sm rounded-pill" %>
+ <%= link_to "フォロー中", customer_follows_path(customer.id), method: :delete, remote: true, data: {confirm: "フォローを解除しますか？"}, class: "btn btn-primary btn-sm rounded-pill mt-2" %>
 <% else %>
- <%= link_to "フォローする", customer_follows_path(customer.id), method: :post, remote: true, class: "btn btn-outline-primary btn-sm rounded-pill" %>
+ <%= link_to "フォローする", customer_follows_path(customer.id), method: :post, remote: true, class: "btn btn-outline-primary btn-sm rounded-pill mt-2" %>
 <% end %>
 <% end %>

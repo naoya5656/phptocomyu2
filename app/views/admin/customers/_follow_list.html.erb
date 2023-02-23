@@ -10,10 +10,10 @@
         </div>
         <div class="col-9 ml-3">
           <h4><%= customer.name %></h4>
-          <%= link_to customer_followings_path(customer) do %>
+          <%= link_to admin_customer_followings_path(customer) do %>
           <strong><%= customer.followings.count %></strong>フォロー
           <% end %>
-          <%= link_to customer_followers_path(customer) do %>
+          <%= link_to admin_customer_followers_path(customer) do %>
           <strong class="ml-3"><%= customer.followers.count %></strong>フォロワー
           <% end %>
         </div>

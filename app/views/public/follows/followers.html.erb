@@ -5,6 +5,10 @@
         <%= render 'public/customers/myprofile', customer: @customer %>
       </div>
       <div class="row">
+        <div class="col-3 mr-auto mt-3 border-bottom mb-3">
+          <h3>フォロワー一覧</h3>
+        </div>
+        <div class="w-100"></div>
         <%= render 'public/follows/follow_list', customers: @customers %>
       </div>
     </div>

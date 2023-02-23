@@ -1,28 +1,38 @@
-<div class="col-1 mb-3">
+<div class="col-1">
   <%= link_to customer_path(customer) do %>
     <%= image_tag customer.get_profile_image(90,90), class: "rounded-circle border border-secondary" %>
   <% end %>
 </div>
 
-<div class="col-4 mb-3 ml-3">
-  <div class="mb-2">
-    <h2><%= customer.name %></h2>
-    <%= link_to "お気に入り", favorites_customer_path(customer), class: "btn btn-danger btn-sm" %>
-  </div>
-   <div id="follow-counter<%= customer.id %>">
-     <%= render 'public/follows/follow_counter', customer: customer %>
-   </div>
-  <% if @customer == current_customer %>
-  <% if customer.name != "ゲスト" %>
-    <%= link_to "プロフィール編集", edit_customer_path(current_customer), class: "btn btn-success btn-sm ml-3" %>
-  <% end %>
-  <% end %>
-  <% if @customer == current_customer %>
-  <% else %>
-    <div id ="follows<%= customer.id %>">
-      <%= render 'public/follows/follow', customer: customer %>
-    </div>
-  <% end %>
+<div class="col-4 mb-2 ml-3">
+  <table class="table">
+    <tbody>
+      <tr>
+          <h2><%= customer.name %></h2>
+      </tr>
+      <tr>
+          <%= link_to "お気に入り", favorites_customer_path(customer), class: "btn btn-danger btn-sm mb-2" %>
+      </tr>
+      <tr>
+        <div id="follow-counter<%= customer.id %>">
+          <%= render 'public/follows/follow_counter', customer: customer %>
+        </div>
+      </tr>
+      <tr>
+        <% if customer == current_customer %>
+        <% if customer.name != "ゲスト" %>
+          <%= link_to "プロフィール編集", edit_customer_path(current_customer), class: "btn btn-success btn-sm mt-2" %>
+        <% end %>
+        <% end %>
+        <% if customer == current_customer %>
+        <% else %>
+          <div id ="follows<%= customer.id %>">
+            <%= render 'public/follows/follow', customer: customer %>
+          </div>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <div class="col-6 border-left mb-3">
   <strong>自己紹介</strong>
