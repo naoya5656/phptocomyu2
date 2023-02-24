@@ -1,10 +1,35 @@
 @import '~bootstrap/scss/bootstrap';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 
-.jumbotron {
-  background-image: url("../../assets/images/abandoned-1550547_960_720.jpg");
-    background-size:cover;
-    filter: blur(5px);
+.main-visual {
+  background-color: black;
+  position: relative;
+  width: 100%; 
+  height: 400px;
+}
+
+.box {
+  height: 400px;
+  width: 600px;
+}
+.main-visual-content {
+  background-image: url("../../assets/images/marigold-1568646_1280.jpg");
+   object-fit: cover;
+    width: auto;
+    height: auto;
+}
+
+.visual-text {
+  position: absolute;
+  color: white;
+  font-family :Quicksand, sans-serif;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
 }
 
 /*ページネーション自体のデザイン*/
@@ -28,3 +53,25 @@
   justify-content: center;
 }
 
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  width: 100%;
+}
+
+.fbody {
+  width: 100%;
+}

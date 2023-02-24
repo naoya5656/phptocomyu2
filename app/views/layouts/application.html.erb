@@ -117,29 +117,64 @@
             </div>
           </div>
     </header>
-    <%= yield %>
-    <footer class="py-3 bg-footer mt-3 text-white" style="background-color:#444444;">
+    <main>
+      <%= yield %>
+    </main>
+    <footer class="py-3 text-white mt-5" style="background-color:#444444;">
       <div class="container">
         <div class="row">
+          <div class="col-1 d-flex align-items-center">
+            <%= link_to root_path, class: "text-light" do %>
+              <h2>PhotoComyu</h2>
+            <% end %>
+          </div>
           <div class="col">
-            <h2>PhotoComyu</h2>
-            <div class="offset-5 row">
-              <div class="col">
-                
-                トップ
-              </div>
-              <div class="col">
-                投稿一覧
-              </div>
-              <div class="col">
-              　カテゴリー
-              </div>
-              <div class="col">
-                投稿する
-              </div>
-              <div class="col">
-                マイページ
-              </div>
+            <div class="offset-4 row">
+              <% if admin_signed_in? %>
+                <div class="col">
+                  <%= link_to "トップ", root_path, class: "text-light" %>
+                </div>
+                <div class="col">
+                  <%= link_to "投稿一覧", admin_photos_path, class: "text-light" %>
+                </div>
+                <div class="col">
+                　<%= link_to "カテゴリー", admin_categories_path, class: "text-light" %>
+                </div>
+                <div class="col">
+                  <%= link_to "ユーザー", admin_customers_path, class: "text-light" %>
+                </div>
+              <% else %>
+              <% if customer_signed_in? %>
+                <div class="col">
+                  <%= link_to "トップ", root_path, class: "text-light" %>
+                </div>
+                <div class="col">
+                  <%= link_to "投稿一覧", photos_path, class: "text-light" %>
+                </div>
+                <div class="col">
+                　<%= link_to "カテゴリー", categories_path, class: "text-light" %>
+                </div>
+                <div class="col">
+                  <%= link_to "投稿する", new_photo_path, class: "text-light" %>
+                </div>
+                <div class="col">
+                  <%= link_to "マイページ", customer_path(current_customer.id), class: "text-light" %>
+                </div>
+              <% else %>
+                <div class="col text-right">
+                  <%= link_to "トップ", root_path, class: "text-light" %>
+                </div>
+                <div class="col text-right">
+                  <%= link_to "新規登録", new_customer_registration_path, class: "text-light" %>
+                </div>
+                <div class="col text-right">
+                  <%= link_to "ログイン", new_customer_session_path, class: "text-light" %>
+                </div>
+                <div class="col text-right">
+                  about
+                </div>
+              <% end %>
+              <% end %>
             </div>
             <div class="row">
               <div class="offset-5 col-1 mt-3">
@@ -157,8 +192,8 @@
         </div>
       </div>
     </footer>
-    <footer class="py-1 bg-footer text-secondary text-center" style="background-color:#111111;">
-       <p>© 2023,PHOTOCOMYU, © 2023 naoyaPF Japan</p>
-    <footer> 
+    <div class="fbody py-1 text-center text-secondary" style="background-color:#111111;">
+      <p>© 2023,PHOTOCOMYU, © 2023 naoyaPF Japan</p>
+    </fbody>
   </body>
 </html>
