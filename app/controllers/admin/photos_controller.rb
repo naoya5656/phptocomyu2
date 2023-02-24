@@ -2,7 +2,7 @@ class Admin::PhotosController < ApplicationController
     before_action :is_admin_access
     before_action :authenticate_admin!
     def index
-      @photos = Photo.all.order(created_at: :DESC)
+      @photos = Photo.all.order(created_at: :DESC).page(params[:page])
     end
     
     def show
