@@ -7,7 +7,7 @@ before_action :authenticate_admin!
  end
  
  def show
-  @customer = Customer.find(params[:id]).order(created_at: :DESC)
+  @customer = Customer.find(params[:id])
   @photos = @customer.photos
  end
  
@@ -48,7 +48,7 @@ before_action :authenticate_admin!
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
-    flash[:notice] = 'ユーザーを削除しました。'
+    flash[:danger] = 'ユーザーを削除しました'
     redirect_to admin_customers_path
   end
   
