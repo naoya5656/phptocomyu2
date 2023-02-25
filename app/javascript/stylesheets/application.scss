@@ -1,30 +1,33 @@
 @import '~bootstrap/scss/bootstrap';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
-
+@import url('https://fonts.googleapis.com/css?family=Sacramento'); // footerフォント
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP'); //メインビジュアルフォント
 .main-visual {
-  background-color: black;
+  text-align: center;
   position: relative;
   width: 100%; 
-  height: 400px;
+  height: 500px;
+  text-align: center;
+  overflow: hidden;
+  background-size: 100% 100%;
+}
+
+.footer-logo {
+  font-family: 'Sacramento', cursive;
 }
 
 .box {
   height: 400px;
   width: 600px;
 }
-.main-visual-content {
-  background-image: url("../../assets/images/marigold-1568646_1280.jpg");
-   object-fit: cover;
-    width: auto;
-    height: auto;
-}
+
 
 .visual-text {
   position: absolute;
-  color: white;
-  font-family :Quicksand, sans-serif;
-  top: 50%;
-  left: 50%;
+  
+  font-family: 'Noto Sans JP', sans-serif;
+  top: 48%;
+  left: 34%;
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
