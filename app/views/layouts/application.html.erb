@@ -129,7 +129,7 @@
             <% end %>
           </div>
           <div class="col">
-            <div class="offset-4 row">
+            <div class="offset-3 row">
               <% if admin_signed_in? %>
                 <div class="col">
                   <%= link_to "トップ", root_path, class: "text-light" %>
@@ -142,6 +142,9 @@
                 </div>
                 <div class="col">
                   <%= link_to "ユーザー", admin_customers_path, class: "text-light" %>
+                </div>
+                <div class="col text-right">
+                  <%= link_to "about", about_path, class: "text-light" %>
                 </div>
               <% else %>
               <% if customer_signed_in? %>
@@ -160,6 +163,9 @@
                 <div class="col">
                   <%= link_to "マイページ", customer_path(current_customer.id), class: "text-light" %>
                 </div>
+                <div class="col text-right">
+                  <%= link_to "about", about_path, class: "text-light" %>
+                </div>
               <% else %>
                 <div class="col text-right">
                   <%= link_to "トップ", root_path, class: "text-light" %>
@@ -171,7 +177,7 @@
                   <%= link_to "ログイン", new_customer_session_path, class: "text-light" %>
                 </div>
                 <div class="col text-right">
-                  about
+                  <%= link_to "about", about_path, class: "text-light" %>
                 </div>
               <% end %>
               <% end %>

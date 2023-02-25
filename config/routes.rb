@@ -5,13 +5,15 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
+  
+  
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'public/sessions#new_guest'
   end
 
   scope module: :public do
     root 'homes#top'
+    get 'home/about' => 'homes#about', as: 'about'
     resources :photos, only: [:index, :edit, :show, :new, :create, :update, :destroy] do
       resource :favorites, only: [:create, :destroy] #「s」をなくすことで、URLに/:idが含まれなくなり,1人のユーザーが1つの投稿にいいねを押すことが出来るのが１回のみなので、URLにparams[:id]を使わなくても良いので「ｓ」を無くした書き方
       resources :photo_comments, only: [:create, :destroy]
