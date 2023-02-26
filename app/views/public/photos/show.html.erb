@@ -23,18 +23,18 @@
       <div class="card">
         <div class="card-header">
           <div class="row">
-            <div class="col-1">
+            <div class="col-3 col-md-1">
               <%= link_to customer_path(@photo.customer) do %>
                 <%= image_tag @photo.customer.get_profile_image(80,80), class: "rounded-circle border border-secondary" %>
               <% end %>
             </div>
-            <div class="col-11">
+            <div class="col-9">
               <%= link_to customer_path(@photo.customer) do %>
               <h4 style="margin-right : 10px"><strong><%= @photo.customer.name %></strong></h4>
               <% end %>
               投稿日:<%= @photo.created_at.strftime('%Y/%m/%d %H:%M') %><br>
               <div class="row">
-                <div class="col-1">
+                <div class="col-0 mr-3 ml-4">
                   <div id ="favorites<%= @photo.id %>">
                     <%= render 'public/favorites/favorites', photo: @photo  %>
                   </div>
@@ -44,7 +44,7 @@
                     <%= render 'public/photo_comments/comments_counter', photo: @photo %>
                   </div>
                 </div>
-                <div class="col-2">
+                <div class="col-10">
                   <% if @photo.customer == current_customer %>
                   <% else %>
                   <div id="follows<%= @photo.customer.id %>">

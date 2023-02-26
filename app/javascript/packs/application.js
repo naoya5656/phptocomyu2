@@ -13,6 +13,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+import "../stylesheets/photos"
 import '@fortawesome/fontawesome-free/js/all';
 
 require('jquery')

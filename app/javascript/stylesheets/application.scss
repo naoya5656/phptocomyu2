@@ -2,14 +2,53 @@
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import url('https://fonts.googleapis.com/css?family=Sacramento'); // footerフォント
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP'); //メインビジュアルフォント
+
+
 .main-visual {
-  text-align: center;
   position: relative;
   width: 100%; 
   height: 500px;
   text-align: center;
   overflow: hidden;
   background-size: 100% 100%;
+  background-color: black;
+}
+
+/* （575px）以上の際に適用される設定 */ 
+@media screen and (min-width:575px) {
+  .tellphone-size {
+    display: none;
+  }
+  .image-content {
+    display: none;
+  }
+  
+  .tellphone-visual-text {
+    display: none;
+  }
+}
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:574px) {
+  .video-content {
+    display: none;
+  }
+  .main-visual {
+    display: none;
+  }
+}
+
+.tellphone-size {
+  text-align: center;
+  position: relative;
+  
+}
+
+.tellphone-visual-text {
+  position: absolute;
+  top: 9%;
+  left: 5%;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .footer-logo {
@@ -22,12 +61,13 @@
 }
 
 
+
 .visual-text {
   position: absolute;
   
   font-family: 'Noto Sans JP', sans-serif;
   top: 46%;
-  left: 34%;
+  left: 35%;
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
@@ -41,8 +81,11 @@
 
 .menber {
   background:rgba(0,128,128,0.3);
+ }
  
-}
+
+
+
 
 /*ページネーション自体のデザイン*/
 .pagination>li>a {          

@@ -15,6 +15,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand" href="/"><span><%= image_tag 'logo.jpg', width: '150px', height: '120px' %> </span></a>
+          
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -129,66 +130,66 @@
             <% end %>
           </div>
           <div class="col">
-            <div class="offset-3 row">
+            <div class="text-right row">
               <% if admin_signed_in? %>
-                <div class="col">
+                <div class="col-12 col-md-2">
                   <%= link_to "トップ", root_path, class: "text-light" %>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-2">
                   <%= link_to "投稿一覧", admin_photos_path, class: "text-light" %>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-2">
                 　<%= link_to "カテゴリー", admin_categories_path, class: "text-light" %>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-2">
                   <%= link_to "ユーザー", admin_customers_path, class: "text-light" %>
                 </div>
-                <div class="col text-right">
+                <div class="col-12 col-md-2">
                   <%= link_to "about", about_path, class: "text-light" %>
                 </div>
               <% else %>
               <% if customer_signed_in? %>
-                <div class="col">
+                <div class="col-12 col-md-2">
                   <%= link_to "トップ", root_path, class: "text-light" %>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-2">
                   <%= link_to "投稿一覧", photos_path, class: "text-light" %>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-2">
                 　<%= link_to "カテゴリー", categories_path, class: "text-light" %>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-2">
                   <%= link_to "投稿する", new_photo_path, class: "text-light" %>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-2">
                   <%= link_to "マイページ", customer_path(current_customer.id), class: "text-light" %>
                 </div>
-                <div class="col text-right">
+                <div class="col-12 col-md-2">
                   <%= link_to "about", about_path, class: "text-light" %>
                 </div>
               <% else %>
-                <div class="col text-right">
+                <div class="col-12 col-md-2">
                   <%= link_to "トップ", root_path, class: "text-light" %>
                 </div>
-                <div class="col text-right">
+                <div class="col-12 col-md-2">
                   <%= link_to "新規登録", new_customer_registration_path, class: "text-light" %>
                 </div>
-                <div class="col text-right">
+                <div class="col-12 col-md-2">
                   <%= link_to "ログイン", new_customer_session_path, class: "text-light" %>
                 </div>
-                <div class="col text-right">
+                <div class="col-12 col-md-2">
                   <%= link_to "about", about_path, class: "text-light" %>
                 </div>
               <% end %>
               <% end %>
             </div>
             <div class="row">
-              <div class="offset-5 col-sm-1 mt-3">
+              <div class="offset-8 col-2 mt-3">
                 <%= link_to 'https://www.twitter.com/@ratatosuku001' do %>
                   <%= image_tag 'twitter.png', width: '40px', height: '40px' %>
                 <% end %>
               </div>
-              <div class="col-sm-3 mt-3">
+              <div class="col-1 mt-3">
                 <%= link_to 'https://www.instagram.com/naotopia' do %>
                   <%= image_tag 'insta-fu.png', width: '40px', height: '40px' %>
                 <% end %>

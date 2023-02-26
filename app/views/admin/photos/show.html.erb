@@ -18,18 +18,18 @@
       <div class="card">
         <div class="card-header">
           <div class="row">
-            <div class="col-1">
+            <div class="col-3 col-md-1">
               <%= link_to admin_customer_path(@photo.customer) do %>
                 <%= image_tag @photo.customer.get_profile_image(80,80), class: "rounded-circle border border-secondary" %>
               <% end %>
             </div>
-            <div class="col-11">
+            <div class="col-9">
               <%= link_to admin_customer_path(@photo.customer) do %>
               <h4 style="margin-right : 10px"><strong><%= @photo.customer.name %></strong></h4>
               <% end %>
               投稿日:<%= @photo.created_at.strftime('%Y/%m/%d %H:%M') %><br>
               <div class="row">
-                <div class="col-1">
+                <div class="col-0 mr-3 ml-4">
                   <i class="far fa-heart"></i>
                   <%= @photo.favorites.count %>
                 </div>
