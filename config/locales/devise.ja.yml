@@ -37,10 +37,11 @@ ja:
         password: パスワード
         email: メールアドレス
         name: 名前
-        password_confirmationn: パスワード確認
+        password_confirmation: パスワード確認
     models:
       user: ユーザー
-      photo: 
+      photo:
+      customer: ユーザー
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
