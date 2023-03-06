@@ -1,4 +1,6 @@
 class Admin::ReportsController < ApplicationController
+    before_action :is_admin_access
+   # before_action :authenticate_admin!
     
     def index 
       @reports = Report.all.order(created_at: :DESC)
