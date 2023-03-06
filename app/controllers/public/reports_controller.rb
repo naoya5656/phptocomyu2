@@ -10,7 +10,7 @@ def create
     @report.reporter_id = current_customer.id  #通報者(reporter_id)にcurrent_user.idを代入
     @report.reported_id = @customer.id #通報される人(reported_id)に上で取得した@user.idを代入
     if @report.save 
-      redirect_to customer_path(@customer), notice: "ご報告ありがとうございます。"
+      redirect_to customer_path(@customer), success: "ご報告ありがとうございます"
     else
       render "new"
     end
@@ -19,6 +19,6 @@ end
 private
 
   def report_params
-    params.require(:report).permit(:reason, :url)
+    params.require(:report).permit(:reason, :url, :image)
   end
 end

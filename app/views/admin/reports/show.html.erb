@@ -30,6 +30,10 @@
                   <td><%= @report.url %></td>
                 </tr>
                 <tr>
+                  <td>スクリーンショット等</td>
+                  <td><%= image_tag @report.image, width: '500px', height: '300px' %></td>
+                </tr>
+                <tr>
                   <td>通報者</td>
                   <td><%= image_tag @report.reporter.get_profile_image(40,40), class: "rounded-circle border border-secondary mr-3" %><%= @report.reporter.name %></td>
                 </tr>
