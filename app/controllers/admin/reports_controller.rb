@@ -22,7 +22,7 @@ class Admin::ReportsController < ApplicationController
     @report = Report.find(params[:id])
     @report.destroy
     flash[:danger] = "通報を削除しました"
-    redirect_to request.referer
+    redirect_to admin_reports_path
     end
       
 
