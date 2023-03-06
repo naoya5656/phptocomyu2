@@ -10,7 +10,8 @@ def create
     @report.reporter_id = current_customer.id  #通報者(reporter_id)にcurrent_user.idを代入
     @report.reported_id = @customer.id #通報される人(reported_id)に上で取得した@user.idを代入
     if @report.save 
-      redirect_to customer_path(@customer), success: "ご報告ありがとうございます"
+      flash[:success] = "ご報告ありがとうございます"
+      redirect_to customer_path(@customer)
     else
       render "new"
     end

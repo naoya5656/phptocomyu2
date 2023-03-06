@@ -41,7 +41,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 namespace :admin do
   resources :categories, only: [:new, :index, :create, :show, :edit, :update, :destroy]
-  resources :reports, only: [:index, :show, :update]
+  resources :reports, only: [:index, :show, :update, :destroy]
   resources :customers, only: [:index, :show, :edit, :update, :destroy] do
   get 'followings' => 'customers#followings', as: 'followings'
   get 'followers' => 'customers#followers', as: 'followers'

@@ -43,6 +43,7 @@
                     <%= form_with model:@report, url:admin_report_path(@report), method: :patch, local: true do |f| %>
                       <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
                       <%= f.submit '更新' %>
+                      <%= link_to "削除", admin_report_path(@report), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm ml-5" %>
                     <% end %>
                   </td>
                 </tr>

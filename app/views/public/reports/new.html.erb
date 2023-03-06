@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-12 col-md-7 mx-auto mt-3">
       <h4 class="py-4 border-bottom">通報</h4>
+      <%= render 'layouts/error_messages', obj: @report %>
       通報するユーザー：<%= @customer.name %>
      
       <%= form_with model:[@customer, @report] do |f| %>
@@ -17,7 +18,7 @@
     　<%= f.text_area :url, rows:'3',placeholder: "通報内容が確認できる投稿のURL、投稿名、投稿日時など", class:"form-control" %>
   </div>
   <div class="form-group mt-3">
-    <%= f.label :"通報対象のスクリーンショット" %>
+    <%= f.label :"通報対象が確認できるスクリーンショット" %>
     <div>
       <%= f.file_field :image, accept: "image/*" %>
     </div>

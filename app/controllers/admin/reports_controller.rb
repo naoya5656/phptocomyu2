@@ -15,6 +15,14 @@ class Admin::ReportsController < ApplicationController
           redirect_to request.referer #遷移元のURLに戻る
         end
     end
+    
+    def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+    flash[:danger] = "通報を削除しました"
+    redirect_to request.referer
+    end
+      
 
 private
 

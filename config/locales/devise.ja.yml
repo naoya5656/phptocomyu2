@@ -38,6 +38,9 @@ ja:
         email: メールアドレス
         name: 名前
         password_confirmation: パスワード確認
+      report:
+        image: 画像
+        reason: 理由
     models:
       user: ユーザー
       photo:

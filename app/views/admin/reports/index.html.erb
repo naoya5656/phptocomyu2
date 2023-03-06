@@ -24,7 +24,7 @@
                 <%= image_tag report.reported.get_profile_image(40,40), class: "rounded-circle border border-secondary mr-3" %><%= report.reported.name %>
               </td>
               <td>
-                <%= report.status_i18n %>
+                <%= report.status_i18n %><%= link_to "削除", admin_report_path(report), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm ml-5" %>
               </td>
             </tr>
           <% end %>
