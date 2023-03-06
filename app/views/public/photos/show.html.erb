@@ -49,6 +49,7 @@
                   <% else %>
                   <div id="follows<%= @photo.customer.id %>">
                     <%= render 'public/follows/follow', customer: @photo.customer %>
+                    <%= link_to "ユーザーを通報", new_customer_report_path(@photo.customer), class: "ml-5 btn btn-outline-secondary btn-sm" %>
                   </div>
                   <% end %>
                 </div>

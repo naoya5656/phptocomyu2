@@ -27,6 +27,7 @@
         <% if customer == current_customer %>
         <% else %>
             <%= render 'public/follows/follow', customer: customer %>
+            <%= link_to "ユーザーを通報", new_customer_report_path(@customer), class: "ml-5 btn btn-outline-secondary btn-sm" %>
         <% end %>
       </tr>
     </tbody>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       resource :follows, only: [:create, :destroy]
       get 'followings' => 'follows#followings', as: 'followings'
       get 'followers' => 'follows#followers', as: 'followers'
+      resources :reports, only: [:new, :create]
       member do
         get :favorites
       end
@@ -40,6 +41,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 namespace :admin do
   resources :categories, only: [:new, :index, :create, :show, :edit, :update, :destroy]
+  resources :reports, only: [:index, :show, :update]
   resources :customers, only: [:index, :show, :edit, :update, :destroy] do
   get 'followings' => 'customers#followings', as: 'followings'
   get 'followers' => 'customers#followers', as: 'followers'

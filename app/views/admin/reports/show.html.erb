@@ -1,0 +1,50 @@
+<div class="text-center">
+<%= render partial: 'layouts/flash', class: "text-center" %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mx-auto px-0 mt-5">
+        <h3>通報詳細<%= link_to "通報一覧", admin_reports_path, class: "btn btn-sm btn-outline-secondary ml-5" %></h3>
+          
+          <table class="table">
+              <tbody>
+                <tr>
+                  <td>通報ID</td>
+                  <td><%= link_to @report.id %></td>
+                </tr>
+                <tr>
+                  <td>会員名</td>
+                  
+                  <td><%= link_to admin_customer_path(@report.reported) do %>
+                        <%= image_tag @report.reported.get_profile_image(40,40), class: "rounded-circle border border-secondary mr-3" %><%= @report.reported.name %>
+                      <% end %>
+                  </td>
+                  
+                </tr>
+                <tr>
+                  <td>理由</td>
+                  <td><%= @report.reason %></td>
+                </tr>
+                <tr>
+                  <td>URL等</td>
+                  <td><%= @report.url %></td>
+                </tr>
+                <tr>
+                  <td>通報者</td>
+                  <td><%= image_tag @report.reporter.get_profile_image(40,40), class: "rounded-circle border border-secondary mr-3" %><%= @report.reporter.name %></td>
+                </tr>
+                <tr>
+                  <td>対応ステータス</td>
+                  <td>
+                    <%= form_with model:@report, url:admin_report_path(@report), method: :patch, local: true do |f| %>
+                      <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
+                      <%= f.submit '更新' %>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 mx-auto px-0 mt-5">
+        <h3>通報一覧</h3>
+        <table class="table">
+        <thead>
+          <tr>
+            <th>通報ID</th>
+            <th>通報者</th>
+            <th>会員名</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody style="background-color:#EEEEEE;">
+          <% @reports.each do |report| %>
+            <tr>
+              <td>
+                <%= link_to report.id, admin_report_path(report) %>
+              </td>
+              <td>
+                <%= image_tag report.reporter.get_profile_image(40,40), class: "rounded-circle border border-secondary mr-3" %><%= report.reporter.name %>
+              </td>
+              <td>
+                <%= image_tag report.reported.get_profile_image(40,40), class: "rounded-circle border border-secondary mr-3" %><%= report.reported.name %>
+              </td>
+              <td>
+                <%= report.status_i18n %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

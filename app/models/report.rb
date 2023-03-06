@@ -1,4 +1,5 @@
 class Report < ApplicationRecord
-    has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
-    has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
+    belongs_to :reporter, class_name: "Customer"
+    belongs_to :reported, class_name: "Customer"
+    enum status: { waiting: 0, keep: 1, finish: 2 }
 end
