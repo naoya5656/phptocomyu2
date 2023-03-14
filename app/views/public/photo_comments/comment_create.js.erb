@@ -1,3 +1,4 @@
 $(".comment-textarea").val('');
 $(".photo-comments-index").html("<%= j(render 'public/photo_comments/index_comments', photo: @photo_comment.photo) %>");
 $("#comments-counter").html("<%= j(render 'public/photo_comments/comments_counter', photo: @photo_comment.photo) %>");
+

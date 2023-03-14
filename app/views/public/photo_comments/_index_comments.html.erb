@@ -17,7 +17,7 @@
       <% if photo_comment.customer == current_customer %>
         <%= link_to "削除", photo_photo_comment_path(photo, photo_comment), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger pull-right" %>
       <% else %>
-        <%= link_to "ユーザーを通報", new_customer_report_path(@photo.customer), class: "ml-5 btn btn-outline-secondary btn-sm" %>
+        <%= link_to "ユーザーを通報", new_customer_report_path(photo.customer), class: "ml-5 btn btn-outline-secondary btn-sm" %>
       <% end %>
     </div>
   </div>

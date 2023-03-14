@@ -1,5 +1,5 @@
 class Admin::CategoriesController < ApplicationController
-  
+  before_action :is_admin_access
 
   def new
     @category = Category.new

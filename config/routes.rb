@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy] #「s」をなくすことで、URLに/:idが含まれなくなり,1人のユーザーが1つの投稿にいいねを押すことが出来るのが１回のみなので、URLにparams[:id]を使わなくても良いので「ｓ」を無くした書き方
       resources :photo_comments, only: [:create, :destroy]
     end
+    get 'photo/rank' => 'photos#weekly_rank'
     resources :categories, only:[:index, :show]
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal'

@@ -28,6 +28,10 @@ class Photo < ApplicationRecord
       @photo = Photo.all
     end
   end
+  
+  def self.last_week
+   Photo.joins(:favorites).where(favorites: { created_at: 0.days.ago.prev_week..0.days.ago.prev_week(:sunday)}).group(:id).order("count(*) desc")
+  end
 
   def get_image
      if image.attached?

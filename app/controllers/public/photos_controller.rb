@@ -1,5 +1,5 @@
 class Public::PhotosController < ApplicationController
-
+before_action :is_matching_login_customer, only: [:edit, :update]
   def new
     @photo = Photo.new
   end
@@ -45,6 +45,10 @@ class Public::PhotosController < ApplicationController
     flash[:danger] = "投稿を削除しました"
     redirect_to photos_path
   end
+  
+  def weekly_rank
+    @ranks = Photo.last_week
+  end
 
 
   private
@@ -52,10 +56,10 @@ class Public::PhotosController < ApplicationController
     params.require(:photo).permit(:name, :body, :image, category_ids: []) #category_ids: [] 投稿に紐付くカテゴリは、チェックボックスによって複数渡される場合があるため、配列形式であることを記載
   end
   
-  def is_matching_login_user
+  def is_matching_login_customer
     photo = Photo.find(params[:id])
     customer_id = photo.customer.id
-    unless user_id == current_customer.id
+    unless customer_id == current_customer.id
       redirect_to photos_path
     end
    end
